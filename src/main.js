@@ -100,6 +100,8 @@ function removeSelectedFile() {
 
   selectedVideo = null;
   fileInput.value = '';
+  selectedCover = null;
+  coverInput.value = '';
 
   uploadArea.classList.remove('hidden');
   selectedFile.classList.add('hidden');
