@@ -155,7 +155,15 @@ async function convertVideo() {
     inputName = `input.${extension[1].toLowerCase()}`;
   }
 
-  const outputName = 'audio-studio-output.mp3';
+    const outputName = 'audio-studio-output.mp3';
+  const originalName = selectedVideo.name.replace(/\.[^/.]+$/, '');
+  const customName = outputNameInput.value.trim()
+    .replace(/\.mp3$/i, '')
+    .replace(/[\\/:*?"<>|]/g, '-')
+    .replace(/[. ]+$/g, '')
+    .slice(0, 100);
+
+  const downloadName = `${customName || originalName}.mp3`;
 
   try {
     setProgress(2, 'Konverter wird geladen …');
