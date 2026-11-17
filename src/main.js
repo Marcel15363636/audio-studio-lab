@@ -164,7 +164,7 @@ async function convertVideo() {
     .slice(0, 100);
 
   const downloadName = `${customName || originalName}.mp3`;
-
+let coverFileName = null;
   try {
     setProgress(2, 'Konverter wird geladen …');
 
