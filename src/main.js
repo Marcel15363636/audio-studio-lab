@@ -273,8 +273,9 @@ const exitCode = await engine.exec(command);
         await ffmpeg.deleteFile(outputName);
       } catch {
         // Die temporäre Datei wurde möglicherweise bereits entfernt.
-             }
-      }      if (coverFileName) {
+      }
+
+      if (coverFileName) {
         try {
           await ffmpeg.deleteFile(coverFileName);
         } catch {
