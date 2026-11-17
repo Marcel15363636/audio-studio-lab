@@ -143,6 +143,8 @@ async function convertVideo() {
   convertButton.disabled = true;
   fileInput.disabled = true;
   quality.disabled = true;
+  outputNameInput.disabled = true;
+  coverInput.disabled = true;
 
   hideError();
   cleanDownload();
