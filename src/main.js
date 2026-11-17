@@ -188,14 +188,36 @@ async function convertVideo() {
 
     const bitrate = `${quality.value}k`;
 
-    const exitCode = await engine.exec([
-      '-i', inputName,
-      '-vn',
-      '-codec:a', 'libmp3lame',
-      '-b:a', bitrate,
-      '-y',
-      outputName
-    ]);
+    const command = ['-i', inputName];
+
+if (selectedCover) {
+  const coverExtension = selectedCover.name.match(/\.([a-z0-9]+)$/i)?.[1]?.toLowerCase() || 'jpg';
+  const coverFileName = `cover.${coverExtension}`;
+
+  await engine.writeFile(coverFileName, await fetchFile(selectedCover));
+
+  command.push(
+    '-i', coverFileName,
+    '-map', '0:a:0',
+    '-map', '1:v:0',
+    '-c:v', 'mjpeg',
+    '-id3v2_version', '3',
+    '-metadata:s:v', 'title=Album cover',
+    '-metadata:s:v', 'comment=Cover (front)',
+    '-disposition:v:0', 'attached_pic'
+  );
+} else {
+  command.push('-vn');
+}
+
+command.push(
+  '-codec:a', 'libmp3lame',
+  '-b:a', bitrate,
+  '-y',
+  outputName
+);
+
+const exitCode = await engine.exec(command);
 
     if (exitCode !== 0) {
       throw new Error('Die Umwandlung konnte nicht abgeschlossen werden.');
