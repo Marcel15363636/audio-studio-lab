@@ -11,6 +11,8 @@ const selectedFile = $('selectedFile');
 const convertButton = $('convertButton');
 const buttonText = $('buttonText');
 const quality = $('quality');
+const outputNameInput = $('outputName');
+const coverInput = $('coverInput');
 const progressSection = $('progressSection');
 const progressLabel = $('progressLabel');
 const progressPercent = $('progressPercent');
@@ -22,6 +24,7 @@ const downloadButton = $('downloadButton');
 const errorMessage = $('errorMessage');
 
 let selectedVideo = null;
+let selectedCover = null;
 let ffmpeg = null;
 let isBusy = false;
 let downloadUrl = null;
