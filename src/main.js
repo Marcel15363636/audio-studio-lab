@@ -209,8 +209,7 @@ async function convertVideo() {
     downloadUrl = URL.createObjectURL(audioBlob);
     downloadButton.href = downloadUrl;
 
-    const originalName = selectedVideo.name.replace(/\.[^/.]+$/, '');
-    downloadButton.download = `${originalName}.mp3`;
+    downloadButton.download = downloadName;
 
     resultInfo.textContent =
       `${formatSize(audioBlob.size)} · ${bitrate}`;
