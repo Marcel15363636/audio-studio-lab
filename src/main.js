@@ -192,7 +192,7 @@ let coverFileName = null;
 
 if (selectedCover) {
   const coverExtension = selectedCover.name.match(/\.([a-z0-9]+)$/i)?.[1]?.toLowerCase() || 'jpg';
-  const coverFileName = `cover.${coverExtension}`;
+  coverFileName = `cover.${coverExtension}`;
 
   await engine.writeFile(coverFileName, await fetchFile(selectedCover));
 
