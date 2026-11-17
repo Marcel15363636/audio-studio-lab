@@ -277,7 +277,24 @@ const exitCode = await engine.exec(command);
     }
   }
 }
+coverInput.addEventListener('change', (event) => {
+  const file = event.target.files?.[0];
 
+  if (!file) {
+    selectedCover = null;
+    return;
+  }
+
+  if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+    selectedCover = null;
+    coverInput.value = '';
+    showError('Bitte wähle ein JPG-, PNG- oder WebP-Bild aus.');
+    return;
+  }
+
+  selectedCover = file;
+  hideError();
+});
 fileInput.addEventListener('change', (event) => {
   chooseFile(event.target.files?.[0]);
 });
