@@ -2,6 +2,6 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/audio-studio/'
+  base: '/audio-studio-lab/'
 });
 
