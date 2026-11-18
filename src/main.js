@@ -264,6 +264,8 @@ const exitCode = await engine.exec(command);
     convertButton.disabled = !selectedVideo;
     fileInput.disabled = false;
     quality.disabled = false;
+    outputNameInput.disabled = false;
+    coverInput.disabled = false;
     buttonText.textContent = 'In MP3 umwandeln';
 
     if (ffmpeg?.loaded) {
